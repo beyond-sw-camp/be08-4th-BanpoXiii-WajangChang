@@ -1,5 +1,5 @@
 # 🏘️ WajangChang
-![logo-eng-horiz](https://github.com/user-attachments/assets/07b7f6eb-5dec-4ba8-ad6c-1c60550bae69)
+![logo-eng-horiz]()
 > [PLAYDATA] 한화시스템 BEYOND SW캠프 / WajangChang
 
 > Team - BanpoXiii
@@ -16,6 +16,9 @@
 <br>
 
 ## ⚙Tech Stack
+<p><strong> Database <br></strong>
+<img alt="MariaDB" src="https://img.shields.io/badge/mariadb-003545?style=for-the-badge&logo=mariadb&logoColor=white"/>
+</p>
 <p><strong> Backend <br></strong>
 <img alt="Java" src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"/>
 <img alt="SpringBoot" src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=FFFFFF"/>
@@ -27,9 +30,6 @@
 <img alt="Bootstrap" src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
 <img alt="JavaScript" src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> 
 <img alt="Vue" src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white">
-</p>
-<p><strong> Database <br></strong>
-<img alt="MariaDB" src="https://img.shields.io/badge/mariadb-003545?style=for-the-badge&logo=mariadb&logoColor=white"/>
 </p>
 <p><strong> DevOps <br></strong>
 <img alt="EC2" src="https://img.shields.io/badge/Amazon%20EC2-FF9900?style=for-the-badge&logo=amazon-ec2&logoColor=white"/>
