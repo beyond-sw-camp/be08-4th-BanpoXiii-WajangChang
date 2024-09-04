@@ -11,8 +11,8 @@
 <br>
 
 ## 📋 Material
-- [Notion Link]()
-- [Presentation Material](https://charming-hospital-33d.notion.site/WajangChang-0a23460c144f4286b2c971066f71b1ae)
+- [Notion Link](https://charming-hospital-33d.notion.site/WajangChang-0a23460c144f4286b2c971066f71b1ae)
+- [Presentation Material]()
 <br>
 
 ## ⚙Tech Stack
