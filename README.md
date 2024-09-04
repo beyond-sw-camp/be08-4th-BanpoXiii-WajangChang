@@ -90,9 +90,9 @@
 ## 👨‍👩‍👧‍👦 Member
 
 [계용운](https://github.com/yongun2)|[김나현](https://github.com/NAHYEON0713)|[윤호연](https://github.com/hoyeon96)|[이주희](https://github.com/juhi0916)|[임지훈](https://github.com/limjihoon99)|[정진주](https://github.com/jeongjinjoo)|
-------|------|------|--------------------------------------|------|
-<img alt="계용운" src="https://github.com/user-attachments/assets/3d1f837d-012f-4f3a-ac5b-bbd038b6fc0d"/> | <img alt="김나현" src="https://github.com/user-attachments/assets/25b20fa4-ec92-4133-b08b-e68b82a98e88"/> | <img alt="윤호연" src="https://github.com/user-attachments/assets/4d974e26-5eb0-479f-9731-172347f2ddda"/> | <img alt="이주희" src="https://github.com/user-attachments/assets/16859c17-e7a7-4e23-8cc6-464df8fad7ff"/> | <img alt="임지훈" src="https://github.com/user-attachments/assets/d235e42a-c5d5-4016-a071-914e7edbd1bd"/> | <img alt="정진주" src="https://github.com/user-attachments/assets/16859c17-e7a7-4e23-8cc6-464df8fad7ff"/> |
-ㅣLeader, Developer|Developer|Developer|Developer|Developer|Developer|
+------|------|------|--------------------------------------|------|-----|
+![계용운](https://github.com/2023-Summer-Bootcamp-Team-K/.github/assets/127572801/fe5a3d0b-144c-42c8-8268-745c1739ebcc) | ![김나현](https://github.com/2023-Summer-Bootcamp-Team-K/.github/assets/127572801/35e6453b-85f2-46e1-b68a-1ddfdf278a19) | ![윤호연](https://github.com/2023-Summer-Bootcamp-Team-K/.github/assets/127572801/07732ff1-fbb6-4292-9c52-eb2408b16fc4) | ![이주희](https://github.com/2023-Summer-Bootcamp-Team-K/.github/assets/127572801/c620ffde-9f95-4edb-a7d5-41b2b86981f5) | ![임지훈](https://github.com/2023-Summer-Bootcamp-Team-K/.github/assets/127572801/76b4dc56-d8ed-4dc7-b883-24f14e075ba5) | ![정진주](https://github.com/2023-Summer-Bootcamp-Team-K/.github/assets/127572801/710751a4-44a7-452e-98e7-343b9d6f9bb3) | 
+Leader, Developer|Developer|Developer|Developer|Developer|Developer|
 
 <br>
 
