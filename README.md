@@ -1,21 +1,27 @@
 # 🏘️ WajangChang
+
+webhook test
 ![logo-eng-horiz]()
+
 > [PLAYDATA] 한화시스템 BEYOND SW캠프 / WajangChang
 
 > Team - BanpoXiii
-<br>
+> <br>
 
 ## ✨ Medium
+
 - [🇺🇸 Medium English.ver]() <br>
 - [🇰🇷 Medium Korean.ver]()
-<br>
+  <br>
 
 ## 📋 Material
+
 - [Notion Link](https://charming-hospital-33d.notion.site/WajangChang-0a23460c144f4286b2c971066f71b1ae)
 - [Presentation Material]()
-<br>
+  <br>
 
 ## ⚙Tech Stack
+
 <p><strong> Database <br></strong>
 <img alt="MariaDB" src="https://img.shields.io/badge/mariadb-003545?style=for-the-badge&logo=mariadb&logoColor=white"/>
 </p>
@@ -45,8 +51,10 @@
 <br>
 
 ## 🗂️ Project Introduction
+
 ### 프로젝트 소개
-**WajangChang**은 
+
+**WajangChang**은
 <br><br>
 
 ### 프로젝트 필요성
@@ -64,6 +72,7 @@
 ## 📑 Requirements Specification
 
 [요구사항 명세서 바로가기]()
+
 <p align="center">
   <img alt="요구사항 명세서" src="" />
 </p>
@@ -72,6 +81,7 @@
 ## 🛠️ Project Design
 
 ### 1. System Architecture
+
 <p align="center">
   <img alt="System Architecture" src="" />
 </p>
@@ -91,6 +101,7 @@
 ## 📆 WBS
 
 [WBS 바로가기]()
+
 <p align="center">
   <img alt="WBS" src="">
 </p>
@@ -98,20 +109,22 @@
 
 ## 👨‍👩‍👧‍👦 Member
 
-[계용운](https://github.com/yongun2)|[김나현](https://github.com/NAHYEON0713)|[윤호연](https://github.com/hoyeon96)|[이주희](https://github.com/juhi0916)|[임지훈](https://github.com/limjihoon99)|[정진주](https://github.com/jeongjinjoo)|
-------|------|------|--------------------------------------|------|-----|
-![계용운]() | ![김나현]() | ![윤호연]() | ![이주희]() | ![임지훈](h) | ![정진주]() | 
-Leader, Developer|Developer|Developer|Developer|Developer|Developer|
+| [계용운](https://github.com/yongun2) | [김나현](https://github.com/NAHYEON0713) | [윤호연](https://github.com/hoyeon96) | [이주희](https://github.com/juhi0916) | [임지훈](https://github.com/limjihoon99) | [정진주](https://github.com/jeongjinjoo) |
+| ------------------------------------ | ---------------------------------------- | ------------------------------------- | ------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| ![계용운]()                          | ![김나현]()                              | ![윤호연]()                           | ![이주희]()                           | ![임지훈](h)                             | ![정진주]()                              |
+| Leader, Developer                    | Developer                                | Developer                             | Developer                             | Developer                                | Developer                                |
 
 <br>
 
 ## 📚 Memoir
-|&nbsp;&nbsp;팀&nbsp;원&nbsp;&nbsp;&nbsp;|회고록|
-|:---:|---|
-|계용운|&nbsp;|
-|김나현|&nbsp;|
-|윤호연|&nbsp;|
-|이주희|&nbsp;|
-|임지훈|&nbsp;|
-|정진주|&nbsp;|
+
+| &nbsp;&nbsp;팀&nbsp;원&nbsp;&nbsp;&nbsp; | 회고록 |
+| :--------------------------------------: | ------ |
+|                  계용운                  | &nbsp; |
+|                  김나현                  | &nbsp; |
+|                  윤호연                  | &nbsp; |
+|                  이주희                  | &nbsp; |
+|                  임지훈                  | &nbsp; |
+|                  정진주                  | &nbsp; |
+
 <br>
