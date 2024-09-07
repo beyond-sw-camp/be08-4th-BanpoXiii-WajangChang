@@ -13,7 +13,7 @@ pipeline {
             steps {
                 // Github에서 소스코드를 체크아웃 하는 단계
                 git branch: 'main', 
-                    credentialsId: 'github-webhooks-key', 
+                    credentialsId: 'github-ssh', 
                     url: 'git@github.com:beyond-sw-camp/be08-4th-BanpoXiii-WajangChang.git'
             }
         }
@@ -25,20 +25,6 @@ pipeline {
                 sh 'ls dist'
             }
         }
-
-        // stage('SonarQube Analysis'){
-        //     steps{
-        //         container('gradle') {
-        //             withSonarQubeEnv('sonarqube-server'){
-        //                 sh '''./gradlew sonar \
-        //                     -Dsonar.projectKey=department-service \
-        //                     -Dsonar.projectName='department-service' \
-        //                     -Dsonar.host.url=http://sonarqube-sonarqube.sonarqube:30019 \
-        //                 '''
-        //             }
-        //         }
-        //     }
-        // }
 
         // stage('Docker Image Build & Push') {
         //     steps {
@@ -58,7 +44,7 @@ pipeline {
         //                 // - credentialsId: 자격 증명을 식별할 수 있는 식별자를 작성한다.
         //                 // - usernameVariable은 자격 증명에서 가져온 사용자 이름을 지칭하는 환경 변수의 이름을 작성한다.
         //                 // - passwordVariable은 자격 증명에서 가져온 비밀번호를 저장하는 환경 변수의 이름을 작성한다.
-        //                 withCredentials([usernamePassword(credentialsId: 'docker-key', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+        //                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
         //                     sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
         //                 }
 
