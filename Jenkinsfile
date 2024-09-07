@@ -1,33 +1,5 @@
 pipeline {
-    agent {
-        kubernetes {
-            yaml'''
-                apiVersion: v1
-                kind: Pod
-                metadata:
-                  name: jenkins-agent
-                spec:
-                  containers:
-                  - name: nodejs
-                    image: node
-                    command:
-                    - cat
-                    tty: true
-                  - name: docker
-                    image: docker:27.2.0-alpine3.20
-                    command:
-                    - cat
-                    tty: true
-                    volumeMounts:
-                    - mountPath: "/var/run/docker.sock"
-                      name: docker-socket
-                  volumes:
-                  - name: docker-socket
-                    hostPath:
-                      path: "/var/run/docker.sock"
-            '''
-        }
-    }
+    agent any
     environment {
         DOCKER_IMAGE_NAME = 'wajangchang/banpoxiii-web'
     }
