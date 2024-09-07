@@ -13,18 +13,13 @@ pipeline {
                     url: 'git@github.com:beyond-sw-camp/be08-4th-BanpoXiii-WajangChang.git'
             }
         }
-        // stage('build') {
-        //     steps {
-        //         // 명령을 실행시킬 컨테이너 지정
-        //         container('gradle') {
-        //             sh 'ls -al'
-        //             sh 'gradle --version'
-        //             sh 'gradle bootJar'
-        //             sh 'ls -al ./build'
-        //             sh 'ls -al ./build/libs'
-        //         }
-        //     }
-        // }
+        stage('build') {
+            steps {
+                sh 'ls -al'
+                sh 'npm run build'
+                
+            }
+        }
 
         // stage('SonarQube Analysis'){
         //     steps{
