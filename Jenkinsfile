@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    tools {
+      git 'Default'
+      nodejs 'node22'
+    }
     environment {
         DOCKER_IMAGE_NAME = 'wajangchang/banpoxiii-web'
     }
