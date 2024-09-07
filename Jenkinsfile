@@ -19,10 +19,10 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'ls -al'
                 sh 'node --version'
                 sh 'npm install'
                 sh 'npm run build'
+                sh 'ls dist'
             }
         }
 
