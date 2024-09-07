@@ -13,9 +13,10 @@ pipeline {
                     url: 'git@github.com:beyond-sw-camp/be08-4th-BanpoXiii-WajangChang.git'
             }
         }
-        stage('build') {
+        stage('Build') {
             steps {
                 sh 'ls -al'
+                sh 'node --version'
                 sh 'npm run build'
                 
             }
