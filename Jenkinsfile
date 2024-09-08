@@ -49,12 +49,11 @@ pipeline {
             steps {
                 script {
                     withCredentials([string(credentialsId: 'ec2-banpoxiii-web-endpoint', variable: 'REMOTE_SERVER_NAME')]) {
-
                         sshPublisher(
                             failOnError: true,
                             publishers: [
                                 sshPublisherDesc(
-                                    configName: '${REMOTE_SERVER_NAME}',
+                                    configName: "${REMOTE_SERVER_NAME}",
                                     verbose: true,
                                     transfers: [
                                         sshTransfer(
@@ -68,9 +67,7 @@ pipeline {
                                 )
                             ]
                         )
-                       
                     }
-                    
                 }
             }
         }
