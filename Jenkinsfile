@@ -21,7 +21,9 @@ pipeline {
             steps {
                 sh 'node --version'
                 sh 'npm install'
-                sh 'npm run build'
+                withCredentials([string(credentialsId: 'banpoxiii-backend-url', variable: 'VITE_PUBLIC_SERVER_URL')]) {
+                    sh 'npm run build'
+                }
                 sh 'ls dist'
             }
         }
@@ -60,7 +62,7 @@ pipeline {
                                         execCommand: """
                                             sudo docker pull ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
                                             sudo docker container rm -f banpoxiii-web || true
-                                            sudo docker run -d --name banpoxiii-web -p 30021:80 ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
+                                            sudo docker run -d --name banpoxiii-web -p 30020:80 ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
                                         """
                                     )
                                 ]
