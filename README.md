@@ -1,24 +1,22 @@
 # 🏘️ WajangChang
-
-webhook test
-![logo-eng-horiz]()
+![와장창로고](https://github.com/user-attachments/assets/0f8c991e-e588-4783-bd59-97737e192f03)
 
 > [PLAYDATA] 한화시스템 BEYOND SW캠프 / WajangChang
 
 > Team - BanpoXiii
-> <br>
+<br>
 
 ## ✨ Medium
 
 - [🇺🇸 Medium English.ver]() <br>
 - [🇰🇷 Medium Korean.ver]()
-  <br>
+<br>
 
 ## 📋 Material
 
 - [Notion Link](https://charming-hospital-33d.notion.site/WajangChang-0a23460c144f4286b2c971066f71b1ae)
 - [Presentation Material]()
-  <br>
+<br>
 
 ## ⚙Tech Stack
 
@@ -41,6 +39,7 @@ webhook test
 <img alt="EC2" src="https://img.shields.io/badge/Amazon%20EC2-FF9900?style=for-the-badge&logo=amazon-ec2&logoColor=white"/>
 <img alt="Docker" src ="https://img.shields.io/badge/Docker-2496ED.svg?&style=for-the-badge&logo=Docker&logoColor=white"/>
 <img alt="Kubernetes" src ="https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white"/>
+<img alt="ArgoCD" src="https://img.shields.io/badge/Argo-EF7B4D?style=for-the-badge&logo=Argo&logoColor=white"/>
 <img alt="Jenkins" src="https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white"/>
 </p>
 <p><strong> Collaboration Tools <br></strong>
@@ -69,18 +68,7 @@ webhook test
 
 <br><br>
 
-## 📑 Requirements Specification
-
-[요구사항 명세서 바로가기]()
-
-<p align="center">
-  <img alt="요구사항 명세서" src="" />
-</p>
-<br>
-
-## 🛠️ Project Design
-
-### 1. System Architecture
+## 🛠️ System Architecture
 
 <p align="center">
   <img alt="System Architecture" src="" />
