@@ -1,14 +1,10 @@
-# Stage 1: Base Image
-FROM nginx:alpine
-
-# Nginx의 기본 설정 파일을 덮어쓰기 위한 설정
-COPY nginx.conf /etc/nginx/nginx.conf
-
-# 기존에 준비된 dist 폴더를 Nginx의 웹 루트로 복사
+FROM nginx:stable-alpine3.20
+LABEL maintainer="cloudyong <cloudyong3620@gmail.com>"
+LABEL version="1.0"
 COPY dist /usr/share/nginx/html
-
-# Nginx 포트 공개
+# SPA 라우팅 처리를 . 할수. ㅣㅆ도록 기본 설정을 변경한 파일로 교체
+COPY default.conf /etc/nginx/conf.d/default.confdo
+ENV TZ=Asia/Seoul
 EXPOSE 80
-
-# Nginx 실행
-CMD ["nginx", "-g", "daemon off;"]
+# nginx를 실행하는 명령어 작성
+CMD [ "nginx", "-g", "daemon off;" ]
