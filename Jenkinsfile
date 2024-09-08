@@ -58,9 +58,9 @@ pipeline {
                                 transfers: [
                                     sshTransfer(
                                         execCommand: """
-                                            docker pull ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
-                                            docker container rm -f banpoxiii-web || true
-                                            docker run -d --name banpoxiii-web -p 30021:80 ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
+                                            sudo docker pull ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
+                                            sudo docker container rm -f banpoxiii-web || true
+                                            sudo docker run -d --name banpoxiii-web -p 30021:80 ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
                                         """
                                     )
                                 ]
