@@ -47,28 +47,27 @@ pipeline {
         }
         stage('Deploy to Ec2') {
             steps {
-                script {
-                    withCredentials([string(credentialsId: 'ec2-banpoxiii-web-endpoint', variable: 'REMOTE_SERVER_NAME')]) {
-                        echo "REMOTE_SERVER_NAME: ${REMOTE_SERVER_NAME}"
-                        sshPublisher(
-                            failOnError: true,
-                            publishers: [
-                                sshPublisherDesc(
-                                    configName: "${REMOTE_SERVER_NAME}",
-                                    verbose: true,
-                                    transfers: [
-                                        sshTransfer(
-                                            execCommand: """
-                                                docker pull ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
-                                                docker container rm -f banpoxiii-web || true
-                                                docker run -d --name banpoxiii-web -p 30021:80 ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
-                                            """
-                                        )
-                                    ]
-                                )
-                            ]
-                        )
-                    }
+                script() {
+
+                    sshPublisher(
+                        failOnError: true,
+                        publishers: [
+                            sshPublisherDesc(
+                                configName: 'ec2-banpoxiii-web',
+                                verbose: true,
+                                transfers: [
+                                    sshTransfer(
+                                        execCommand: """
+                                            docker pull ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
+                                            docker container rm -f banpoxiii-web || true
+                                            docker run -d --name banpoxiii-web -p 30021:80 ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
+                                        """
+                                    )
+                                ]
+                            )
+                        ]
+                    )
+                    
                 }
             }
         }
