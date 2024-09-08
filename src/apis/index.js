@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:8080/v1/api",
+  baseURL: import.meta.env.VITE_PUBLIC_SERVER_URL,
 });
 
 export { apiClient };
