@@ -75,7 +75,10 @@ pipeline {
     }
     post {
         success {
+            script() {
+
             withCredentials([string(credentialsId: 'discord-noti', variable: 'DISCORD')]) {
+                echo "DISCORD: ${DISCORD}"
                 discordSend description: """
                 제목 : "배포 테스트중"
                 결과 : ${currentBuild.result}
@@ -85,18 +88,23 @@ pipeline {
                 title: "${env.JOB_NAME} : ${currentBuild.displayName} 성공", 
                 webhookURL: "${DISCORD}"
             }
+            }
         }
 
         failure {
-            withCredentials([string(credentialsId: 'discord-noti', variable: 'DISCORD')]) {
-                discordSend description: """
-                제목 : "우리꺼 테스트중"
-                결과 : ${currentBuild.result}
-                실행 시간 : ${currentBuild.duration / 1000}s
-                """,
-                result: currentBuild.currentResult,
-                title: "${env.JOB_NAME} : ${currentBuild.displayName} 실패", 
-                webhookURL: "${DISCORD}"
+            script() {
+
+                withCredentials([string(credentialsId: 'discord-noti', variable: 'DISCORD')]) {
+                    echo "DISCORD: ${DISCORD}"
+                    discordSend description: """
+                    제목 : "우리꺼 테스트중"
+                    결과 : ${currentBuild.result}
+                    실행 시간 : ${currentBuild.duration / 1000}s
+                    """,
+                    result: currentBuild.currentResult,
+                    title: "${env.JOB_NAME} : ${currentBuild.displayName} 실패", 
+                    webhookURL: "${DISCORD}"
+                }
             }
         }
     }
