@@ -49,6 +49,7 @@ pipeline {
             steps {
                 script {
                     withCredentials([string(credentialsId: 'ec2-banpoxiii-web-endpoint', variable: 'REMOTE_SERVER_NAME')]) {
+                        echo "REMOTE_SERVER_NAME: ${REMOTE_SERVER_NAME}"
                         sshPublisher(
                             failOnError: true,
                             publishers: [
