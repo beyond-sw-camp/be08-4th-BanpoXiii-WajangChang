@@ -3,6 +3,7 @@ pipeline {
     tools {
       git 'Default'
       nodejs 'node22'
+      docker 'docker'
     }
     environment {
         DOCKER_IMAGE_NAME = 'wajangchang/banpoxiii-web'
