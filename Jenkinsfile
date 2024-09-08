@@ -49,21 +49,26 @@ pipeline {
             steps {
                 script {
                     withCredentials([string(credentialsId: 'ec2-banpoxiii-web-endpoint', variable: 'REMOTE_SERVER_NAME')]) {
-                        publishOverSsh([
-                            publisherName: "${REMOTE_SERVER_NAME}",
-                            transfers: [
-                                [
-                                    sourceFiles: '', // 필요 시 파일을 전송할 수 있음, 현재는 사용하지 않음
-                                    remoteDirectory: "${REMOTE_DIRECTORY}",
-                                    execCommand: """
-                                        docker pull ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
-                                        docker container rm -f banpoxiii-web || true
-                                        docker run -d --name banpoxiii-web -p 30021:80 ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
-                                    """
-                                ]
-                            ],
-                            failOnError: true
-                        ])
+
+                        sshPublisher(
+                            failOnError: true,
+                            publishers: [
+                                sshPublisherDesc(
+                                    configName: '${REMOTE_SERVER_NAME}',
+                                    verbose: true,
+                                    transfers: [
+                                        sshTransfer(
+                                            execCommand: """
+                                                docker pull ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
+                                                docker container rm -f banpoxiii-web || true
+                                                docker run -d --name banpoxiii-web -p 30021:80 ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
+                                            """
+                                        )
+                                    ]
+                                )
+                            ]
+                        )
+                       
                     }
                     
                 }
