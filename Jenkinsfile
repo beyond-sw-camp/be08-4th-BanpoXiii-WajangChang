@@ -72,4 +72,16 @@ pipeline {
         }
 
         failure {
-            withCredentials​⬤
+            withCredentials([string(credentialsId: 'discord-noti', variable: 'DISCORD')]) {
+                discordSend description: """
+                제목 : "우리꺼 테스트중"
+                결과 : ${currentBuild.result}
+                실행 시간 : ${currentBuild.duration / 1000}s
+                """,
+                result: currentBuild.currentResult,
+                title: "${env.JOB_NAME} : ${currentBuild.displayName} 실패", 
+                webhookURL: "${DISCORD}"
+            }
+        }
+    }
+}
