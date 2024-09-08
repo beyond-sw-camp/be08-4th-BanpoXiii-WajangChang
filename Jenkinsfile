@@ -5,7 +5,7 @@ pipeline {
       nodejs 'node22'
     }
     environment {
-        DOCKER_IMAGE_NAME = 'wajangchang/banpoxiii-web'
+        DOCKER_IMAGE_NAME = 'cloudyong/banpoxiii-web'
     }
 
     stages {
