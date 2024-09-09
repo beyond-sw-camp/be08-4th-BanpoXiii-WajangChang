@@ -146,7 +146,7 @@ Waruru 서비스를 통해 다음과 같은 효과를 기대할 수 있습니다
 
 | [계용운](https://github.com/yongun2) | [김나현](https://github.com/NAHYEON0713) | [윤호연](https://github.com/hoyeon96) | [임지훈](https://github.com/limjihoon99) | [정진주](https://github.com/jeongjinjoo) |
 | ------------------------------------ | ---------------------------------------- | ------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| ![계용운]()                          | ![김나현]()                              | ![윤호연]()                           | ![임지훈](h)                             | ![정진주]()                              |
+| <img alt="계용운" src="https://github.com/user-attachments/assets/3fbb0f72-9f9b-49c8-87f0-01873185f631" width="400" /> | <img alt="김나현" src="https://github.com/user-attachments/assets/4ab874f5-c578-4baf-816d-02878f2ae787" width="400" /> | <img alt="윤호연" src="https://github.com/user-attachments/assets/c18ae208-16c5-4bd6-ad60-5a6b75cde1f6" width="400" /> | <img alt="임지훈" src="https://github.com/user-attachments/assets/8ff0448a-4ed7-48b9-9a73-5f2ea709413a" width="400" /> | <img alt="정진주" src="https://github.com/user-attachments/assets/70494fdb-e17c-4a9d-bf8f-13a2254f6ad6" width="400" /> |
 | Leader, Developer                    | Developer                                | Developer                             | Developer                                | Developer                                |
 
 <br>
