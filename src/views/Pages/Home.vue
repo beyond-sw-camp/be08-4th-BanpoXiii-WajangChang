@@ -1,7 +1,7 @@
 <template>
   <main class="p-4">
     <header class="mb-4">
-      <h3>잘 바뀌나?</h3>
+      <h3>잘 바뀌yo?</h3>
     </header>
 
     <b-container class="">
