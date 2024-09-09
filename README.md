@@ -135,10 +135,10 @@ WajangChang 서비스를 통해 다음과 같은 효과를 기대할 수 있습�
 
 ## 📆 WBS
 
-[WBS 바로가기]()
+[WBS 바로가기](https://docs.google.com/spreadsheets/d/1cedw_u9rFYajM1GBSbDE1cBmKWk9C1-YPrx_vlalgh0/edit?gid=0#gid=0)
 
 <p align="center">
-  <img alt="WBS" src="">
+  <img alt="WBS" src="https://github.com/user-attachments/assets/44f6ffbe-aa83-4c34-8dea-904c1a69eb29">
 </p>
 <br>
 
