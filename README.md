@@ -1,5 +1,5 @@
 # 🏘️ WajangChang
-![와장창로고](https://github.com/user-attachments/assets/0f8c991e-e588-4783-bd59-97737e192f03)
+![와장창로고](https://github.com/user-attachments/assets/5f26acca-3607-4005-94a8-e525f2d014b3)
 
 > [PLAYDATA] 한화시스템 BEYOND SW캠프 / WajangChang
 
