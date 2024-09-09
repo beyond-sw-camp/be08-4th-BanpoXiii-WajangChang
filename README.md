@@ -9,7 +9,7 @@
 ## ✨ Medium
 
 - [🇺🇸 Medium English.ver]() <br>
-- [🇰🇷 Medium Korean.ver]()
+- [🇰🇷 Medium Korean.ver](https://medium.com/@ljh01051826177/wajangchang-%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9D%B8-%EC%A3%BC%ED%83%9D-%EA%B4%80%EB%A6%AC-%EC%84%9C%EB%B9%84%EC%8A%A4-0138dcb0ba0a)
 <br>
 
 ## 📋 Material
