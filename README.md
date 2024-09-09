@@ -125,12 +125,284 @@ WajangChang 서비스를 통해 다음과 같은 효과를 기대할 수 있습�
 
 ## 💾 Project Implementation
 
-### 1. CI: Github Action
+### 1. CI: Jenkins
+Docker 환경의 Jenkins를 운영하며 Frontend, Backend github repository의 webhook을 사용해 build를 trigger 합니다.
+
+또한 Backend와 Frontend pipeline 모두 github에서 pull 받은 코드를 바탕으로 빌드 및 도커 허브에 푸시 합니다.
+
+#### Frontend Build pipeline
+<img width="1037" alt="스크린샷 2024-09-09 오후 3 43 51" src="https://github.com/user-attachments/assets/5442acd0-1a76-40bc-b691-db0b0cabb718">
+
+#### Jenkinsfile
+```groovy
+pipeline {
+    agent any
+    tools {
+        git 'Default'
+        nodejs 'node22'
+    }
+    environment {
+        DOCKER_IMAGE_NAME = 'cloudyong/banpoxiii-web'
+        DOCKER_IMAGE_TAG = "${env.BUILD_NUMBER}"
+        REMOTE_DIRECTORY = '/path/to/remote/directory' // 원격 서버의 작업 디렉토리
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', 
+                    credentialsId: 'github-ssh', 
+                    url: 'git@github.com:beyond-sw-camp/be08-4th-BanpoXiii-WajangChang.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'node --version'
+                sh 'npm install'
+                withCredentials([string(credentialsId: 'banpoxiii-backend-url', variable: 'VITE_PUBLIC_SERVER_URL')]) {
+                    sh 'npm run build'
+                }
+                sh 'ls dist'
+            }
+        }
+        stage('Docker Image Build & Push') {
+            steps {
+                script() {
+                    echo "DockerImageTag: ${DOCKER_IMAGE_TAG}"
+                    
+                    sh 'docker logout'
+                    
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
+                    }
+                    
+                    withEnv(["DOCKER_IMAGE_TAG=${DOCKER_IMAGE_TAG}"]) {
+                        sh 'docker build --no-cache -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ./'
+                        sh 'docker image inspect ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}'
+                        sh 'docker push ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}'
+                    }
+                    sh 'docker logout'
+                }
+            }
+        }
+        stage('Deploy to Ec2') {
+            steps {
+                script() {
+
+                    sshPublisher(
+                        failOnError: true,
+                        publishers: [
+                            sshPublisherDesc(
+                                configName: 'ec2-banpoxiii-web',
+                                verbose: true,
+                                transfers: [
+                                    sshTransfer(
+                                        execCommand: """
+                                            sudo docker pull ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
+                                            sudo docker container rm -f banpoxiii-web || true
+                                            sudo docker run -d --name banpoxiii-web -p 30020:80 ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
+                                        """
+                                    )
+                                ]
+                            )
+                        ]
+                    )
+                }
+            }
+        }
+    }
+    post {
+        success {
+            script() {
+
+            withCredentials([string(credentialsId: 'discord-noti', variable: 'DISCORD')]) {
+                echo "DISCORD: ${DISCORD}"
+                discordSend description: """
+                제목 : "배포 테스트중"
+                결과 : ${currentBuild.result}
+                실행 시간 : ${currentBuild.duration / 1000}s
+                """,
+                result: currentBuild.currentResult,
+                title: "${env.JOB_NAME} : ${currentBuild.displayName} 성공", 
+                webhookURL: "${DISCORD}"
+            }
+            }
+        }
+
+        failure {
+            script() {
+
+                withCredentials([string(credentialsId: 'discord-noti', variable: 'DISCORD')]) {
+                    echo "DISCORD: ${DISCORD}"
+                    discordSend description: """
+                    제목 : "우리꺼 테스트중"
+                    결과 : ${currentBuild.result}
+                    실행 시간 : ${currentBuild.duration / 1000}s
+                    """,
+                    result: currentBuild.currentResult,
+                    title: "${env.JOB_NAME} : ${currentBuild.displayName} 실패", 
+                    webhookURL: "${DISCORD}"
+                }
+            }
+        }
+    }
+}
+```
+
+#### Backend Build pipeline
+<img width="1035" alt="스크린샷 2024-09-09 오후 3 44 05" src="https://github.com/user-attachments/assets/7dcc8202-9caf-4059-8040-3c62eae3b6e5">
+
+#### Jenkinsfile
+```groovy
+pipeline {
+    agent any
+    tools {
+        git 'Default'
+    }
+    environment {
+        DOCKER_IMAGE_NAME = 'cloudyong/banpoxiii-server'
+        DOCKER_IMAGE_TAG = "${env.BUILD_NUMBER}"
+        REMOTE_DIRECTORY = '/path/to/remote/directory' // 원격 서버의 작업 디렉토리
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', 
+                    credentialsId: 'github-ssh', 
+                    url: 'git@github.com:beyond08-final-team/be08-4th-BanpoXiii-WajangChang-server.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                script() {
+
+                    sh 'docker logout'
+                    
+                    // docker login
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
+                    }
+                    sh 'ls -l'
+                    sh 'chmod -R 777 src/main/resources'
+
+                    // add application.yml
+                    withCredentials([file(credentialsId: 'banpoxiii-server-properties', variable: 'APP_YML')]) {
+                        sh 'cp $APP_YML src/main/resources/application.yml'
+                    }
+
+                    withEnv(["DOCKER_IMAGE_TAG=${DOCKER_IMAGE_TAG}"]) {
+                        sh 'docker build --no-cache -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ./'
+                        sh 'docker image inspect ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}'
+                        sh 'docker push ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}'
+                    }
+
+                    sh 'docker logout'
+
+                }
+
+            }
+        }
+
+        stage('Deploy to Ec2') {
+            steps {
+                script() {
+
+                    sshPublisher(
+                        failOnError: true,
+                        publishers: [
+                            sshPublisherDesc(
+                                configName: 'ec2-banpoxiii-server',
+                                verbose: true,
+                                transfers: [
+                                    sshTransfer(
+                                        execCommand: """
+                                            sudo docker pull ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
+                                            sudo docker container rm -f banpoxiii-server || true
+                                            sudo docker run -d --name banpoxiii-server -p 30021:8080 ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
+                                        """
+                                    )
+                                ]
+                            )
+                        ]
+                    )
+                    
+                }
+            }
+        }
+    }
+    post {
+        success {
+            script() {
+
+            withCredentials([string(credentialsId: 'discord-noti', variable: 'DISCORD')]) {
+                echo "DISCORD: ${DISCORD}"
+                discordSend description: """
+                제목 : "서버 배포 테스트중 성공"
+                결과 : ${currentBuild.result}
+                실행 시간 : ${currentBuild.duration / 1000}s
+                """,
+                result: currentBuild.currentResult,
+                title: "${env.JOB_NAME} : ${currentBuild.displayName} 성공", 
+                webhookURL: "${DISCORD}"
+            }
+            }
+        }
+
+        failure {
+            script() {
+
+                withCredentials([string(credentialsId: 'discord-noti', variable: 'DISCORD')]) {
+                    echo "DISCORD: ${DISCORD}"
+                    discordSend description: """
+                    제목 : "서버 배포 테스트중 실패"
+                    결과 : ${currentBuild.result}
+                    실행 시간 : ${currentBuild.duration / 1000}s
+                    """,
+                    result: currentBuild.currentResult,
+                    title: "${env.JOB_NAME} : ${currentBuild.displayName} 실패", 
+                    webhookURL: "${DISCORD}"
+                }
+            }
+        }
+    }
+}
+```
+
 
 <br>
 
-### 2. CD: Jenkins
+### 2. CD: Jenkins(Publish over ssh)
+Jenkins plugin Publish over ssh 사용해 Frontend, Backend 애플리케이션이 올라가 있는 EC2에 직접 Command 전송
 
+해당 Ec2에서는 수신한 명령어 실행해 기존 컨테이너 삭제 후 새로운 이미지를 기반으로 컨테이너 생성 및 실행
+
+#### Jenkinsfile 침고
+```groovy
+
+stage('Deploy to Ec2') {
+      steps {
+          script() {
+              sshPublisher(
+                  failOnError: true,
+                  publishers: [
+                      sshPublisherDesc(
+                          configName: 'ec2-banpoxiii-server',
+                          verbose: true,
+                          transfers: [
+                              sshTransfer(
+                                  execCommand: """
+                                      sudo docker pull       ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
+                                      sudo docker container rm -f banpoxiii-server || true
+                                      sudo docker run -d --name banpoxiii-server -p 30021:8080 ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
+                                  """
+                              )
+                          ]
+                      )
+                  ]
+              )
+          }
+      }
+}
+```
 <br>
 
 ## 📆 WBS
