@@ -15,7 +15,7 @@
 ## 📋 Material
 
 - [Notion Link](https://charming-hospital-33d.notion.site/WajangChang-0a23460c144f4286b2c971066f71b1ae)
-- [Presentation Material]()
+- [Presentation Material](https://github.com/user-attachments/files/16926373/_BanpoXiii.pdf)
 <br>
 
 ## ⚙Tech Stack
