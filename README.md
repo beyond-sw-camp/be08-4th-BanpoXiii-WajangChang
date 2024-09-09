@@ -125,7 +125,9 @@ WajangChang 서비스를 통해 다음과 같은 효과를 기대할 수 있습�
 
 ## 💾 Project Implementation
 
-### 1. CI: Jenkins
+<details>
+<summary>CI: Jenkins</summary>
+<div>
 Docker 환경의 Jenkins를 운영하며 Frontend, Backend github repository의 webhook을 사용해 build를 trigger 합니다.
 
 또한 Backend와 Frontend pipeline 모두 github에서 pull 받은 코드를 바탕으로 빌드 및 도커 허브에 푸시 합니다.
@@ -367,10 +369,13 @@ pipeline {
 }
 ```
 
-
 <br>
+</div>
+</details>
 
-### 2. CD: Jenkins(Publish over ssh)
+<details>
+<summary>CD: Jenkins(Publish over ssh)</summary>
+<div>
 Jenkins plugin Publish over ssh 사용해 Frontend, Backend 애플리케이션이 올라가 있는 EC2에 직접 Command 전송
 
 해당 Ec2에서는 수신한 명령어 실행해 기존 컨테이너 삭제 후 새로운 이미지를 기반으로 컨테이너 생성 및 실행
@@ -405,9 +410,13 @@ stage('Deploy to Ec2') {
 ```
 
 <br>
+</div>
+</details>
 
-### 3. 베포 결과
-
+<details>
+<summary>Deployment Results</summary>
+<div>
+      
 #### Frontend 배포 전
 <img width="1552" alt="스크린샷 2024-09-09 오후 4 13 33" src="https://github.com/user-attachments/assets/0835476c-37e6-4233-b52e-0a9ded30335b">
 
@@ -426,6 +435,8 @@ stage('Deploy to Ec2') {
 #### Backend 배포 후
 <img width="1279" alt="스크린샷 2024-09-09 오후 4 18 58" src="https://github.com/user-attachments/assets/ac994d1f-923e-4b3b-aeba-d3036dbd7bd7">
 
+</div>
+</details>
 <br>
 
 ## 📆 WBS
@@ -450,7 +461,7 @@ stage('Deploy to Ec2') {
 
 | &nbsp;&nbsp;팀&nbsp;원&nbsp;&nbsp;&nbsp; | 회고록 |
 | :--------------------------------------: | ------ |
-|                  계용운                  | &nbsp;Jenkins와 플러그인을 사용하여 직접 CI/CD를 구축할 수 있었던 의미있는 프로젝트였습니다. 한 가지 아쉬운 점은 ec2에 k8s 환경을 구축하는데는 실패해서 ArgoCD를 사용해 CI/CD를 완전히 분리하지 못해서 아쉽습니다. 🙏|
+|                  계용운                  | &nbsp; |
 |                  김나현                  | &nbsp;이번 프로젝트는 내용 자체가 어렵고 처음 배우는 것들이라 막막했는데 팀원들 덕분에 많이 배우고 잘 해낼 수 있었던 것 같습니다. 고생한 팀원들 고맙습니다! |
 |                  윤호연                  | &nbsp;도커, 쿠버네티스, 젠킨스 등 모든게 생소하고 어려운 이번 devops 프로젝트였습니다. 뛰어난 팀장님과 팀원들 덕분에 많이 배워갈 수 있었고, 이번 프로젝트를 통해 얻어간 것들을 최종 프로젝트에서도 활용할 수 있도록 하겠습니다. |
 |                  임지훈                  | &nbsp;쿠버네티스와 젠킨스를 처음 접해다보니 배포하는데 있어서 어려움을 많이 느꼈습니다. 하지만 매우 뛰어난 팀장님 덕분에 수월하게 해결했던 것 같습니다.<br>&nbsp;이번 DevOps 프로젝트는 매우 많은 것을 알아갈 수 있었던 시간이었고, 이 경험을 최종 프로젝트에 잘 녹여낸다면 아주 완벽한 최종 결과물을 얻을 수 있을 것 같습니다.|
