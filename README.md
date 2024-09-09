@@ -403,6 +403,29 @@ stage('Deploy to Ec2') {
       }
 }
 ```
+
+<br>
+
+### 3. 베포 결과
+
+#### Frontend 배포 전
+<img width="1552" alt="스크린샷 2024-09-09 오후 4 13 33" src="https://github.com/user-attachments/assets/0835476c-37e6-4233-b52e-0a9ded30335b">
+
+<img width="1077" alt="스크린샷 2024-09-09 오후 4 17 32" src="https://github.com/user-attachments/assets/be03d1b0-420e-4717-af25-c76c0d99be9f">
+
+#### Frontend 배포 후
+<img width="832" alt="스크린샷 2024-09-09 오후 4 16 58" src="https://github.com/user-attachments/assets/7f337ea9-a6ac-4622-a06b-65d26253ccbc">
+
+
+#### Backend 배포 전
+<img width="832" alt="스크린샷 2024-09-09 오후 4 14 56" src="https://github.com/user-attachments/assets/a9734acc-c779-49ea-bfc3-fce445e4d89b">
+
+<img width="928" alt="스크린샷 2024-09-09 오후 4 19 15" src="https://github.com/user-attachments/assets/06f2b39a-b627-4f6f-8338-338021185f28">
+
+
+#### Backend 배포 후
+<img width="1279" alt="스크린샷 2024-09-09 오후 4 18 58" src="https://github.com/user-attachments/assets/ac994d1f-923e-4b3b-aeba-d3036dbd7bd7">
+
 <br>
 
 ## 📆 WBS
