@@ -118,7 +118,7 @@ Waruru 서비스를 통해 다음과 같은 효과를 기대할 수 있습니다
 ## 🛠️ System Architecture
 
 <p align="center">
-  <img alt="System Architecture" src="" />
+  <img alt="System Architecture" src="https://github.com/user-attachments/assets/c262eac1-1954-4044-a0c1-8c0ee342abd2" />
 </p>
 
 <br>
