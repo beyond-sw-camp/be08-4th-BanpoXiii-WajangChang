@@ -125,6 +125,16 @@ WajangChang 서비스를 통해 다음과 같은 효과를 기대할 수 있습�
 
 <br>
 
+## 📑 CI/CD Feature Specification
+
+[CI/CD 기능 명세서 바로가기](https://docs.google.com/spreadsheets/d/1cedw_u9rFYajM1GBSbDE1cBmKWk9C1-YPrx_vlalgh0/edit?gid=1289440485#gid=1289440485)
+
+<p align="center">
+  <img alt="CI/CD" src="https://github.com/user-attachments/assets/a70f12af-0f18-4abe-86d8-25e335276fea">
+</p>
+<br>
+
+
 ## 💾 Project Implementation
 
 <details>
