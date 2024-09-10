@@ -77,33 +77,35 @@ pipeline {
     post {
         success {
             script() {
+                def commitMessage = sh(script: "git log -1 --pretty=%B", returnStdout: true).trim()
 
-            withCredentials([string(credentialsId: 'discord-noti', variable: 'DISCORD')]) {
-                echo "DISCORD: ${DISCORD}"
-                discordSend description: """
-                제목 : "배포 테스트중"
-                결과 : ${currentBuild.result}
-                실행 시간 : ${currentBuild.duration / 1000}s
-                """,
-                result: currentBuild.currentResult,
-                title: "${env.JOB_NAME} : ${currentBuild.displayName} 성공", 
-                webhookURL: "${DISCORD}"
-            }
+                withCredentials([string(credentialsId: 'discord-noti', variable: 'DISCORD')]) {
+                    echo "DISCORD: ${DISCORD}"
+                    discordSend description: """
+                    제목 : "프론트 퇴근"
+                    결과 : ${currentBuild.result}
+                    실행 시간 : ${currentBuild.duration / 1000}s
+                    """,
+                    result: currentBuild.currentResult,
+                    title: "${env.JOB_NAME} : ${currentBuild.displayName} 성공 - ${commitMessage}", 
+                    webhookURL: "${DISCORD}"
+                }
             }
         }
 
         failure {
             script() {
+                def commitMessage = sh(script: "git log -1 --pretty=%B", returnStdout: true).trim()
 
                 withCredentials([string(credentialsId: 'discord-noti', variable: 'DISCORD')]) {
                     echo "DISCORD: ${DISCORD}"
                     discordSend description: """
-                    제목 : "우리꺼 테스트중"
+                    제목 : "프론트 야근"
                     결과 : ${currentBuild.result}
                     실행 시간 : ${currentBuild.duration / 1000}s
                     """,
                     result: currentBuild.currentResult,
-                    title: "${env.JOB_NAME} : ${currentBuild.displayName} 실패", 
+                    title: "${env.JOB_NAME} : ${currentBuild.displayName} 실패 - ${commitMessage}", 
                     webhookURL: "${DISCORD}"
                 }
             }
